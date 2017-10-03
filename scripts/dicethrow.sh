@@ -2,12 +2,14 @@
 # A script for generating dice throws using RPG-like syntax
 
 function usage {
-    echo -e\
-         "Usage:\n"\
-         `basename $0` " [-h | --help] [<T>d<S>]\n"\
-         "where\n"\
-         "T - number of throws\n"\
-         "S - number of die sides";
+    cat <<EOF
+Usage:
+	`basename $0` [-h | --help] [<T>d<S>]
+	
+	where
+        T - number of throws
+        S - number of die sides
+EOF
 }
 
 if [ $# -gt 1 ]
