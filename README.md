@@ -16,4 +16,4 @@ unmodifiable so that you can use vim as a file viewer.
 
 ## [zsh/ldot.zsh](zsh/ldot.zsh)
 
-Zsh function that lists only dotfiles in the given directory.
+Zsh function that lists only hidden files (AKA dotfiles) in the given directory.
