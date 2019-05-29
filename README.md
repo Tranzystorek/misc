@@ -16,6 +16,8 @@ Simulates a dicethrow, accepts standard RPG syntax ("THROWS d SIDES", e.g. 2d6).
 A SpaceVim bootstrap function that makes files opened in read-only mode
 unmodifiable so that you can use vim as a file viewer.
 
+Preferably used with `alias view="vim -R"`.
+
 ### [zsh/ldot.zsh](zsh/ldot.zsh)
 
 Zsh function that lists only hidden files (AKA dotfiles) in the given directory.
