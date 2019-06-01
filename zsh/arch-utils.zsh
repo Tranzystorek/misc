@@ -39,12 +39,12 @@ function clean_pkg_cache() {
 }
 
 function remove_orphans() {
-    local orphans="$(_run_pacommand -Qtdq)"
+    local orphans=("${(@f)"$(_run_pacommand -Qtdq)"}")
 
-    if [[ -z $orphans ]]; then
+    if [[ -z ${orphans[*]} ]]; then
         echo "No orphans to remove"
         return 0
     fi
 
-    _run_pacommand -Rns "$orphans"
+    _run_pacommand -Rns "${orphans[@]}"
 }
