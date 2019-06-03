@@ -30,15 +30,15 @@ function _run_pacommand() {
     eval $pacommand $*
 }
 
-function upgrade_packages() {
+function _upgrade_packages() {
     _run_pacommand -Syu
 }
 
-function clean_pkg_cache() {
+function _clean_pkg_cache() {
     _run_pacommand -Sc
 }
 
-function remove_orphans() {
+function _remove_orphans() {
     local -a orphans
     orphans=("${(@f)"$(_run_pacommand -Qtdq)"}")
 
@@ -49,3 +49,56 @@ function remove_orphans() {
 
     _run_pacommand -Rns "${orphans[@]}"
 }
+
+function _usage() {
+    cat <<END
+Usage:
+    pak <opts...>
+
+Options:
+
+    --upgrade
+        Upgrade all system packages
+
+    --clean
+        Clean package cache
+
+    --orphans
+        Remove orphaned packages
+
+    --help
+        Print this help message
+END
+}
+
+function pak() {
+    local -a cmds
+    zparseopts -D -a cmds -upgrade -clean -orphans -help
+
+    if [[ ${#cmds[@]} -eq 0 || $# -ne 0 ]]; then
+        _usage
+        return 1
+    fi
+
+    for cmd in ${cmds[@]}; do
+        case $cmd in
+            --upgrade)
+                _upgrade_packages
+                ;;
+            --clean)
+                _clean_pkg_cache
+                ;;
+            --orphans)
+                _remove_orphans
+                ;;
+            --help)
+                _usage
+                return 0
+                ;;
+        esac
+    done
+}
+
+compdef \
+    "_arguments '--upgrade[Upgrade all system packages]' '--clean[Clean package cache]' '--orphans[Remove orphaned packages]' '--help[Print help message]'" \
+    pak
