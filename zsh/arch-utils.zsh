@@ -66,14 +66,19 @@ Options:
     --orphans
         Remove orphaned packages
 
-    --help
-        Print this help message
+    --help, -h
+        Print this help message and exit
 END
 }
 
 function pak() {
-    local -a cmds
-    zparseopts -D -a cmds -upgrade -clean -orphans -help
+    local -a cmds help
+    zparseopts -D -a cmds -upgrade -clean -orphans -help=help h=help
+
+    if [[ ${#help[@]} -gt 0 ]]; then
+        _usage
+        return 0
+    fi
 
     if [[ ${#cmds[@]} -eq 0 || $# -ne 0 ]]; then
         _usage
@@ -90,10 +95,6 @@ function pak() {
                 ;;
             --orphans)
                 _remove_orphans
-                ;;
-            --help)
-                _usage
-                return 0
                 ;;
         esac
     done
