@@ -56,7 +56,6 @@ Usage:
     pak <opts...>
 
 Options:
-
     --upgrade
         Upgrade all system packages
 
