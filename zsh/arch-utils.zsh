@@ -101,5 +101,9 @@ function pak() {
 }
 
 compdef \
-    "_arguments '--upgrade[Upgrade all system packages]' '--clean[Clean package cache]' '--orphans[Remove orphaned packages]' '--help[Print help message]'" \
+    "_arguments \
+    '--upgrade[Upgrade all system packages]' \
+    '--clean[Clean package cache]' \
+    '--orphans[Remove orphaned packages]' \
+    '--help[Print help message and exit]'" \
     pak
