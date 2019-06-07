@@ -1,3 +1,3 @@
-function! myspacevim#after() abort
+function! readonly#after() abort
     let &l:modifiable = !&readonly
 endfunction
