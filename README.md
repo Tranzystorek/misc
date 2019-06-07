@@ -11,7 +11,7 @@ I created. Feel free to use if you want.
 
 Simulates a dicethrow, accepts standard RPG syntax ("THROWS d SIDES", e.g. 2d6).
 
-### [vim/myspacevim.vim](vim/myspacevim.vim)
+### [vim/readonly.vim](vim/readonly.vim)
 
 A SpaceVim bootstrap function that makes files opened in read-only mode
 unmodifiable so that you can use vim as a file viewer.
