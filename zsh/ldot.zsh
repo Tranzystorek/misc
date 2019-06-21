@@ -6,7 +6,7 @@ function _do_ldot() {
     fi
 }
 
-function _ldot() {
+function ldot() {
     local ldot_wdir="."
 
     if [[ -n "$1" ]]; then
@@ -21,4 +21,4 @@ function _ldot() {
     _do_ldot "$ldot_wdir"
 }
 
-compdef "_path_files -/" _ldot
+compdef "_path_files -/" ldot
