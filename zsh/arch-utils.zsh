@@ -1,4 +1,5 @@
 # a set of useful utilities for pacman actions
+# see pak --help for more info
 
 function _is_command() {
     command -v "$1" >& /dev/null
