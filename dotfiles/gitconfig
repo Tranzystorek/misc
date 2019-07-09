@@ -1,0 +1,21 @@
+[core]
+    editor = vim
+
+[diff]
+    tool = icdiff
+
+[difftool]
+    prompt = false
+
+[difftool "icdiff"]
+    cmd = icdiff -N $LOCAL $REMOTE
+
+[merge]
+    tool = meld
+    conflictstyle = diff3
+
+[mergetool "meld"]
+    cmd = meld -o "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
+
+[alias]
+    up = "!git fetch --all -p; git merge --ff-only @{u}"
