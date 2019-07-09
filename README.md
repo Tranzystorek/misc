@@ -7,25 +7,22 @@ I created. Feel free to use if you want.
 
 ## Contents
 
-### [bash/dicethrow.sh](bash/dicethrow.sh) / [python/dicethrow.py](python/dicethrow.py)
+### bash
 
-Simulates a dicethrow, accepts standard RPG syntax ("THROWS d SIDES", e.g. 2d6).
-
-### [vim/readonly.vim](vim/readonly.vim)
-
-A SpaceVim bootstrap function that makes files opened in read-only mode
-unmodifiable so that you can use vim as a file viewer.
-
-Preferably used with `alias view="vim -R"`.
-
-### [zsh/ldot.zsh](zsh/ldot.zsh)
-
-Zsh function that lists only hidden files (AKA dotfiles) in the given directory.
-
-### [zsh/arch-utils.zsh](zsh/arch-utils.zsh)
-
-A set of useful zsh utilities for arch package management.
+Bash (or POSIX sh) utilities.
 
 ### dotfiles
 
 Configuration dotfiles for various things. See [README](dotfiles/README.md).
+
+### python
+
+Python utilities.
+
+### vim
+
+Vimscripts of various sorts.
+
+### zsh
+
+Zsh utilities. Highly unlikely to be compatible with Bash.
