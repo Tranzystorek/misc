@@ -25,3 +25,7 @@ Zsh function that lists only hidden files (AKA dotfiles) in the given directory.
 ### [zsh/arch-utils.zsh](zsh/arch-utils.zsh)
 
 A set of useful zsh utilities for arch package management.
+
+### dotfiles
+
+Configuration dotfiles for various things. See [README](dotfiles/README.md).
