@@ -57,23 +57,27 @@ Usage:
     pak <opts...>
 
 Options:
-    --upgrade
+    -u, --upgrade
         Upgrade all system packages
 
-    --clean
+    -c, --clean
         Clean package cache
 
-    --orphans
+    -o, --orphans
         Remove orphaned packages
 
-    --help, -h
+    -h, --help
         Print this help message and exit
 END
 }
 
 function pak() {
     local -a cmds help
-    zparseopts -D -a cmds -upgrade -clean -orphans -help=help h=help
+    zparseopts -D -M -a cmds \
+        u -upgrade=u \
+        c -clean=c \
+        o -orphans=o \
+        h=help -help=h
 
     if [[ ${#help[@]} -gt 0 ]]; then
         _usage
@@ -87,13 +91,13 @@ function pak() {
 
     for cmd in ${cmds[@]}; do
         case $cmd in
-            --upgrade)
+            -u|--upgrade)
                 _upgrade_packages
                 ;;
-            --clean)
+            -c|--clean)
                 _clean_pkg_cache
                 ;;
-            --orphans)
+            -o|--orphans)
                 _remove_orphans
                 ;;
         esac
@@ -102,8 +106,8 @@ function pak() {
 
 compdef \
     "_arguments \
-    '--upgrade[Upgrade all system packages]' \
-    '--clean[Clean package cache]' \
-    '--orphans[Remove orphaned packages]' \
-    '--help[Print help message and exit]'" \
+    {-u,--upgrade}'[Upgrade all system packages]' \
+    {-c,--clean}'[Clean package cache]' \
+    {-o,--orphans}'[Remove orphaned packages]' \
+    {-h,--help}'[Print help message and exit]'" \
     pak
