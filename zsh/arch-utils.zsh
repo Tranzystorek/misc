@@ -31,15 +31,15 @@ function _run_pacommand() {
     eval $pacommand $*
 }
 
-function _upgrade_packages() {
+function _sub_upgrade() {
     _run_pacommand -Syu
 }
 
-function _clean_pkg_cache() {
+function _sub_clean() {
     _run_pacommand -Sc
 }
 
-function _remove_orphans() {
+function _sub_orphans() {
     local -a orphans
     orphans=("${(@f)"$(_run_pacommand -Qtdq)"}")
 
@@ -54,60 +54,72 @@ function _remove_orphans() {
 function _usage() {
     cat <<END
 Usage:
-    pak <opts...>
+    pak <opts...> <subcmds...>
 
 Options:
-    -u, --upgrade
-        Upgrade all system packages
-
-    -c, --clean
-        Clean package cache
-
-    -o, --orphans
-        Remove orphaned packages
-
     -h, --help
         Print this help message and exit
+
+Subcommands:
+    upgrade
+        Upgrade all system packages
+
+    clean
+        Clean package cache
+
+    orphans
+        Remove orphaned packages
 END
 }
 
 function pak() {
-    local -a cmds help
-    zparseopts -D -M -a cmds \
-        u -upgrade=u \
-        c -clean=c \
-        o -orphans=o \
-        h=help -help=h
+    local -a help
+    zparseopts -D -E -M -a help \
+        h -help=h
 
     if [[ ${#help[@]} -gt 0 ]]; then
         _usage
         return 0
     fi
 
-    if [[ ${#cmds[@]} -eq 0 || $# -ne 0 ]]; then
+    if [[ $# -eq 0 ]]; then
         _usage
         return 1
     fi
 
-    for cmd in ${cmds[@]}; do
-        case $cmd in
-            -u|--upgrade)
-                _upgrade_packages
+    local -U subcmds
+    for entry in "$@"; do
+        case $entry in
+            upgrade|clean|orphans)
+                subcmds+=($entry)
                 ;;
-            -c|--clean)
-                _clean_pkg_cache
-                ;;
-            -o|--orphans)
-                _remove_orphans
+            *)
+                _usage
+                return 1
                 ;;
         esac
     done
+
+    for cmd in ${subcmds[@]}; do
+        _sub_${cmd}
+    done
+}
+
+function _arch_utils_option_comp() {
+    _arguments \
+        {-h,--help}'[Print help message and exit]'
+}
+
+function _arch_utils_subcommand_comp() {
+    local -a descriptions
+    descriptions=('upgrade:Upgrade all system packages' \
+                  'clean:Clean package cache' \
+                  'orphans:Remove orphaned packages')
+    _describe 'subcommand' descriptions
 }
 
 compdef \
-    "_arguments \
-    {-u,--upgrade}'[Upgrade all system packages]' \
-    {-c,--clean}'[Clean package cache]' \
-    {-o,--orphans}'[Remove orphaned packages]' \
-    {-h,--help}'[Print help message and exit]'" \
+    "_alternative \
+    commands:subcommand:_arch_utils_subcommand_comp \
+    arguments:option:_arch_utils_option_comp" \
     pak
