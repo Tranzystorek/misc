@@ -15,7 +15,7 @@ function ldot() {
             return 1
         fi
 
-        local ldot_wdir="$1"
+        ldot_wdir="$1"
     fi
 
     _do_ldot "$ldot_wdir"
