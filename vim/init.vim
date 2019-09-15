@@ -2,8 +2,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'dikiaap/minimalist'
 Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'srcery-colors/srcery-vim'
+Plug 'itchyny/lightline.vim'
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sheerun/vim-polyglot'
@@ -13,13 +13,15 @@ call plug#end()
 "true readonly
 autocmd BufRead * let &l:modifiable = !&readonly
 
+"lightline config
+let g:lightline = {
+	\ 'colorscheme': 'srcery_drk',
+	\ }
+
 "color schemes
 set termguicolors
 set background=dark
-colorscheme gruvbox
-let g:gruvbox_contrast_dark="hard"
-
-let g:airline_powerline_fonts = 1
+colorscheme srcery
 
 "sane display
 set number
