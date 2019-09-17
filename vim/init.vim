@@ -27,5 +27,10 @@ colorscheme srcery
 set number
 set cursorline
 
+"display whitespace/breaks
+set showbreak=↪\ 
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set list
+
 "default system clipboard
 set clipboard+=unnamedplus
