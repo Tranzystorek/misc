@@ -15,7 +15,11 @@
     conflictstyle = diff3
 
 [mergetool "meld"]
-    cmd = meld -o "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
+    cmd = meld --auto-merge -o "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
+    trustExitCode = true
+
+[mergetool]
+    keepBackup = false
 
 [alias]
     up = "!git fetch --all -p; git merge --ff-only @{u}"
