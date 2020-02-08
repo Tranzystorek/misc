@@ -15,13 +15,16 @@ autocmd BufRead * let &l:modifiable = !&readonly
 
 "lightline config
 let g:lightline = {
-	\ 'colorscheme': 'srcery_drk',
-	\ }
+        \ 'colorscheme': 'srcery_drk',
+        \ }
 
 "color schemes
 set termguicolors
 set background=dark
 colorscheme srcery
+
+"tab settings
+set expandtab
 
 "sane display
 set number
