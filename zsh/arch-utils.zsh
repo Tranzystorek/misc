@@ -40,10 +40,10 @@ function _sub_clean() {
 }
 
 function _sub_orphans() {
-    local -a orphans
-    orphans=("${(@f)"$(_run_pacommand -Qtdq)"}")
+    local -a orphans=(${(f)"$(_run_pacommand -Qtdq)"})
+    local n_orphans="${#orphans[@]}"
 
-    if [[ -z ${orphans[*]} ]]; then
+    if ! (( n_orphans )); then
         echo "No orphans to remove"
         return 0
     fi
@@ -77,12 +77,12 @@ function pak() {
     zparseopts -D -E -M -a help \
         h -help=h
 
-    if [[ ${#help[@]} -gt 0 ]]; then
+    if (( ${#help[@]} )); then
         _usage
         return 0
     fi
 
-    if [[ $# -eq 0 ]]; then
+    if ! (( $# )); then
         _usage
         return 1
     fi
