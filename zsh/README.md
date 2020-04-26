@@ -2,6 +2,10 @@
 
 ## List
 
+### [aliases.zsh](aliases.zsh)
+
+A handful of most useful aliases.
+
 ### [arch-utils.zsh](arch-utils.zsh)
 
 A small set of useful zsh utilities for Arch Linux package management.
