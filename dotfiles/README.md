@@ -20,3 +20,9 @@ Saner config for git, including:
 ### tmux.conf
 
 Saner config for tmux.
+
+### starship.toml
+
+QoL config for the [Starship prompt](https://starship.rs/).
+
+Symlink under ~/.config
