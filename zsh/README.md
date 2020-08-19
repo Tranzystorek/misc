@@ -6,7 +6,7 @@
 
 A handful of most useful aliases.
 
-### [arch-utils.zsh](arch-utils.zsh)
+### [arch-utils](arch-utils)
 
 A small set of useful zsh utilities for Arch Linux package management.
 
@@ -49,7 +49,9 @@ tmux
 
     zplug "plugins/fasd", from:oh-my-zsh
 
-    zplug "~/repos/misc/zsh", use:"{aliases,ldot,arch-utils}.zsh", from:local
+    zplug "~/repos/misc/zsh/arch-utils", from:local
+
+    zplug "~/repos/misc/zsh", use:"{aliases,ldot}.zsh", from:local
 
     zplug load
     ```

@@ -104,22 +104,3 @@ function pak() {
         _sub_${cmd}
     done
 }
-
-function _arch_utils_option_comp() {
-    _arguments \
-        {-h,--help}'[Print help message and exit]'
-}
-
-function _arch_utils_subcommand_comp() {
-    local -a descriptions
-    descriptions=('upgrade:Upgrade all system packages' \
-                  'clean:Clean package cache' \
-                  'orphans:Remove orphaned packages')
-    _describe 'subcommand' descriptions
-}
-
-compdef \
-    "_alternative \
-    commands:subcommand:_arch_utils_subcommand_comp \
-    arguments:option:_arch_utils_option_comp" \
-    pak
