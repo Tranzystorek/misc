@@ -49,8 +49,6 @@ tmux
 
     zplug "plugins/fasd", from:oh-my-zsh
 
-    zplug "~/repos/misc/zsh/arch-utils", from:local
-
     zplug "~/repos/misc/zsh", use:"{aliases,ldot}.zsh", from:local
 
     zplug load
