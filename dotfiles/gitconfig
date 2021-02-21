@@ -22,11 +22,4 @@
     keepBackup = false
 
 [alias]
-    up = "!git fetch --all -p; git merge --ff-only @{u}"
     st = status
-
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
