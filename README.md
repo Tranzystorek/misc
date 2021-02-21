@@ -11,10 +11,6 @@ I created. Feel free to use if you want.
 
 Bash (or POSIX sh) utilities.
 
-### dotfiles
-
-Configuration dotfiles for various things. See [README](dotfiles/README.md).
-
 ### python
 
 Python utilities.
