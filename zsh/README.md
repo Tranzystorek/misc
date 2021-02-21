@@ -11,6 +11,8 @@ create a .pacnames file in your home directory with
 wrapper command names in separate lines.
 Otherwise defaults to `sudo pacman`.
 
+You might want to check out [pakr](https://github.com/tranzystorek-io/pakr).
+
 ### zshrc.d
 
 Directory with various zsh configurations, usually to be sourced in the primary .zshrc file.
