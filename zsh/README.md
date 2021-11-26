@@ -13,6 +13,11 @@ Otherwise defaults to `sudo pacman`.
 
 You might want to check out [pakr](https://github.com/tranzystorek-io/pakr).
 
+### [ldot](ldot)
+
+A wrapper for `ls` to list hidden directories and files.
+Superseded by <https://github.com/tranzystorek-io/ldot>.
+
 ### zshrc.d
 
 Directory with various zsh configurations, usually to be sourced in the primary .zshrc file.
